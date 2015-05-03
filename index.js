@@ -162,7 +162,7 @@ var keywords = {
  *
  * @param {String} str
  * @return {Array}
- * @api private
+ * @api public
  */
 
 module.exports.hex2rgb = function(str) {
@@ -192,7 +192,7 @@ module.exports.hex2rgb = function(str) {
  * @param {Number} y
  * @param {Number} k
  * @return {Array}
- * @api private
+ * @api public
  */
 
 module.exports.cmyk2rgb = function(c, m, y, k) {
@@ -215,7 +215,7 @@ module.exports.cmyk2rgb = function(c, m, y, k) {
  * @param {Number} s
  * @param {Number} l
  * @return {Array}
- * @api private
+ * @api public
  */
 
 module.exports.hsl2rgb = function(h, s, l) {
@@ -249,7 +249,7 @@ module.exports.hsl2rgb = function(h, s, l) {
  * @param {Number} s
  * @param {Number} v
  * @return {Array}
- * @api private
+ * @api public
  */
 
 module.exports.hsv2rgb = function(h, s, v) {
@@ -281,7 +281,7 @@ module.exports.hsv2rgb = function(h, s, v) {
  *
  * @param {String} keyword
  * @return {Array}
- * @api private
+ * @api public
  */
 
 module.exports.keyword2rgb = function(keyword) {
@@ -297,7 +297,7 @@ module.exports.keyword2rgb = function(keyword) {
  * @param {Number} g
  * @param {Number} b
  * @return {Array}
- * @api private
+ * @api public
  */
 
 module.exports.rgb2hex = function(r, g, b) {
@@ -321,7 +321,7 @@ module.exports.rgb2hex = function(r, g, b) {
  * @param {Number} g
  * @param {Number} b
  * @return {Array}
- * @api private
+ * @api public
  */
 
 module.exports.rgb2cmyk = function(r, g, b) {
@@ -349,7 +349,7 @@ module.exports.rgb2cmyk = function(r, g, b) {
  * @param {Number} g
  * @param {Number} b
  * @return {Array}
- * @api private
+ * @api public
  */
 
 module.exports.rgb2hsl = function(r, g, b) {
@@ -384,7 +384,7 @@ module.exports.rgb2hsl = function(r, g, b) {
  * @param {Number} g
  * @param {Number} b
  * @return {Array}
- * @api private
+ * @api public
  */
 
 module.exports.rgb2hsv = function(r, g, b) {
@@ -418,7 +418,7 @@ module.exports.rgb2hsv = function(r, g, b) {
  * @param {Number} g
  * @param {Number} b
  * @return {String}
- * @api private
+ * @api public
  */
 
 module.exports.rgb2keyword = function() {
