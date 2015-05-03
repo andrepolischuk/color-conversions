@@ -1,0 +1,23 @@
+{
+  "name": "color-conversions",
+  "description": "Color conversion functions",
+  "version": "0.0.0",
+  "keywords": [
+    "color",
+    "conversions",
+    "ccc"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/andrepolischuk/color-conversions.git"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.4"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
+  "license": "MIT"
+}
