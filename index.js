@@ -431,3 +431,271 @@ module.exports.rgb2keyword = function() {
     }
   }
 };
+
+/**
+ * Expose KEYWORD to HEX
+ *
+ * @param {String} str
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.keyword2hex = function(str) {
+  return exports.rgb2hex.apply(null, exports.keyword2rgb(str));
+};
+
+/**
+ * Expose HEX to KEYWORD
+ *
+ * @param {String} str
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.hex2keyword = function(str) {
+  return exports.rgb2keyword.apply(null, exports.hex2rgb(str));
+};
+
+/**
+ * Expose KEYWORD to CMYK
+ *
+ * @param {String} str
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.keyword2cmyk = function(str) {
+  return exports.rgb2cmyk.apply(null, exports.keyword2rgb(str));
+};
+
+/**
+ * Expose CMYK to KEYWORD
+ *
+ * @param {Number} c
+ * @param {Number} m
+ * @param {Number} y
+ * @param {Number} k
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.cmyk2keyword = function(c, m, y, k) {
+  return exports.rgb2keyword.apply(null, exports.cmyk2rgb(c, m, y, k));
+};
+
+/**
+ * Expose KEYWORD to HSL
+ *
+ * @param {String} str
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.keyword2hsl = function(str) {
+  return exports.rgb2hsl.apply(null, exports.keyword2rgb(str));
+};
+
+/**
+ * Expose HSL to KEYWORD
+ *
+ * @param {Number} h
+ * @param {Number} s
+ * @param {Number} l
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.hsl2keyword = function(h, s, l) {
+  return exports.rgb2keyword.apply(null, exports.hsl2rgb(h, s, l));
+};
+
+/**
+ * Expose KEYWORD to HSV
+ *
+ * @param {String} str
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.keyword2hsv = function(str) {
+  return exports.rgb2hsv.apply(null, exports.keyword2rgb(str));
+};
+
+/**
+ * Expose HSV to KEYWORD
+ *
+ * @param {Number} h
+ * @param {Number} s
+ * @param {Number} v
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.hsv2keyword = function(h, s, v) {
+  return exports.rgb2keyword.apply(null, exports.hsv2rgb(h, s, v));
+};
+
+/**
+ * Expose HEX to CMYK
+ *
+ * @param {String} str
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.hex2cmyk = function(str) {
+  return exports.rgb2cmyk.apply(null, exports.hex2rgb(str));
+};
+
+/**
+ * Expose CMYK to HEX
+ *
+ * @param {Number} c
+ * @param {Number} m
+ * @param {Number} y
+ * @param {Number} k
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.cmyk2hex = function(c, m, y, k) {
+  return exports.rgb2hex.apply(null, exports.cmyk2rgb(c, m, y, k));
+};
+
+/**
+ * Expose HEX to HSL
+ *
+ * @param {String} str
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.hex2hsl = function(str) {
+  return exports.rgb2hsl.apply(null, exports.hex2rgb(str));
+};
+
+/**
+ * Expose HSL to HEX
+ *
+ * @param {Number} h
+ * @param {Number} s
+ * @param {Number} l
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.hsl2hex = function(h, s, l) {
+  return exports.rgb2hex.apply(null, exports.hsl2rgb(h, s, l));
+};
+
+/**
+ * Expose HEX to HSV
+ *
+ * @param {String} str
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.hex2hsv = function(str) {
+  return exports.rgb2hsv.apply(null, exports.hex2rgb(str));
+};
+
+/**
+ * Expose HSV to HEX
+ *
+ * @param {Number} h
+ * @param {Number} s
+ * @param {Number} v
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.hsv2hex = function(h, s, v) {
+  return exports.rgb2hex.apply(null, exports.hsv2rgb(h, s, v));
+};
+
+/**
+ * Expose CMYK to HSL
+ *
+ * @param {Number} c
+ * @param {Number} m
+ * @param {Number} y
+ * @param {Number} k
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.cmyk2hsl = function(c, m, y, k) {
+  return exports.rgb2hsl.apply(null, exports.cmyk2rgb(c, m, y, k));
+};
+
+/**
+ * Expose HSL to CMYK
+ *
+ * @param {Number} h
+ * @param {Number} s
+ * @param {Number} l
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.hsl2cmyk = function(h, s, l) {
+  return exports.rgb2cmyk.apply(null, exports.hsl2rgb(h, s, l));
+};
+
+/**
+ * Expose CMYK to HSV
+ *
+ * @param {Number} c
+ * @param {Number} m
+ * @param {Number} y
+ * @param {Number} k
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.cmyk2hsv = function(c, m, y, k) {
+  return exports.rgb2hsv.apply(null, exports.cmyk2rgb(c, m, y, k));
+};
+
+/**
+ * Expose HSV to CMYK
+ *
+ * @param {Number} h
+ * @param {Number} s
+ * @param {Number} v
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.hsv2cmyk = function(h, s, v) {
+  return exports.rgb2cmyk.apply(null, exports.hsv2rgb(h, s, v));
+};
+
+/**
+ * Expose HSL to HSV
+ *
+ * @param {Number} h
+ * @param {Number} s
+ * @param {Number} l
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.hsl2hsv = function(h, s, l) {
+  return exports.rgb2hsv.apply(null, exports.hsl2rgb(h, s, l));
+};
+
+/**
+ * Expose HSV to HSL
+ *
+ * @param {Number} h
+ * @param {Number} s
+ * @param {Number} v
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.hsv2hsl = function(h, s, v) {
+  return exports.rgb2hsl.apply(null, exports.hsv2rgb(h, s, v));
+};
