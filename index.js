@@ -158,121 +158,23 @@ var keywords = {
 };
 
 /**
- * Expose HEX to RGB
+ * Expose RGB to KEYWORD
  *
- * @param {String} str
+ * @param {Number} r
+ * @param {Number} g
+ * @param {Number} b
  * @return {Array}
  * @api public
  */
 
-module.exports.hex2rgb = function(str) {
-  var len = str.length / 3;
-  var r = str.substr(0, len);
-  var g = str.substr(len, len);
-  var b = str.substr(len * 2, len);
-
-  if (len < 2) {
-    r += r;
-    g += g;
-    b += b;
-  }
-
-  r = parseInt(r, 16);
-  g = parseInt(g, 16);
-  b = parseInt(b, 16);
-
-  return [r, g, b];
-};
-
-/**
- * Expose CMYK to RGB
- *
- * @param {Number} c
- * @param {Number} m
- * @param {Number} y
- * @param {Number} k
- * @return {Array}
- * @api public
- */
-
-module.exports.cmyk2rgb = function(c, m, y, k) {
-  c /= 100;
-  m /= 100;
-  y /= 100;
-  k /= 100;
-
-  var r = round(255 * (1 - c) * (1 - k));
-  var g = round(255 * (1 - m) * (1 - k));
-  var b = round(255 * (1 - y) * (1 - k));
-
-  return [r, g, b];
-};
-
-/**
- * Expose HSL to RGB
- *
- * @param {Number} h
- * @param {Number} s
- * @param {Number} l
- * @return {Array}
- * @api public
- */
-
-module.exports.hsl2rgb = function(h, s, l) {
-  h /= 60;
-  s /= 100;
-  l /= 100;
-
-  var c = 255 * (1 - abs((2 * l) - 1)) * s;
-  var x = c * (1 - abs((h % 2) - 1));
-  var m = (255 * l) - (c / 2);
-  var hi = floor(h) % 6;
-
-  c = round(c + m);
-  x = round(x + m);
-  m = round(m);
-
-  switch (hi) {
-    case 0: return [c, x, m];
-    case 1: return [x, c, m];
-    case 2: return [m, c, x];
-    case 3: return [m, x, c];
-    case 4: return [x, m, c];
-    case 5: return [c, m, x];
-  }
-};
-
-/**
- * Expose HSV to RGB
- *
- * @param {Number} h
- * @param {Number} s
- * @param {Number} v
- * @return {Array}
- * @api public
- */
-
-module.exports.hsv2rgb = function(h, s, v) {
-  h /= 60;
-  s /= 100;
-  v /= 100;
-
-  var c = 255 * v * s;
-  var x = c * (1 - abs((h % 2) - 1));
-  var m = 255 * v - c;
-  var hi = floor(h) % 6;
-
-  c = round(c + m);
-  x = round(x + m);
-  m = round(m);
-
-  switch (hi) {
-    case 0: return [c, x, m];
-    case 1: return [x, c, m];
-    case 2: return [m, c, x];
-    case 3: return [m, x, c];
-    case 4: return [x, m, c];
-    case 5: return [c, m, x];
+module.exports.rgb2keyword = function() {
+  for (var k in keywords) {
+    if (keywords.hasOwnProperty(k)) {
+      for (var i = 0; i < 3; i++) {
+        if (keywords[k][i] !== arguments[i]) break;
+      }
+      if (i > 2) return [k];
+    }
   }
 };
 
@@ -285,9 +187,7 @@ module.exports.hsv2rgb = function(h, s, v) {
  */
 
 module.exports.keyword2rgb = function(keyword) {
-  if (keyword in keywords) {
-    return keywords[keyword];
-  }
+  if (keyword in keywords) return keywords[keyword];
 };
 
 /**
@@ -301,17 +201,24 @@ module.exports.keyword2rgb = function(keyword) {
  */
 
 module.exports.rgb2hex = function(r, g, b) {
-  var str = [
-    parseInt(r).toString(16),
-    parseInt(g).toString(16),
-    parseInt(b).toString(16)
-  ];
+  return [((b | g << 8 | r << 16) | 1 << 24).toString(16).slice(1)];
+};
 
-  for (var i = 0; i < str.length; i++) {
-    str[i] += str[i].length < 2 ? '0' : '';
+/**
+ * Expose HEX to RGB
+ *
+ * @param {String} str
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.hex2rgb = function(str) {
+  if (str.length === 3) {
+    str = str[0] + str[0] + str[1] + str[1] + str[2] + str[2];
   }
 
-  return [str.join('')];
+  var rgb = parseInt(str, 16);
+  return [rgb >> 16, rgb >> 8 & 255, rgb & 255];
 };
 
 /**
@@ -340,6 +247,30 @@ module.exports.rgb2cmyk = function(r, g, b) {
   k = round(k * 100);
 
   return [c, m, y, k];
+};
+
+/**
+ * Expose CMYK to RGB
+ *
+ * @param {Number} c
+ * @param {Number} m
+ * @param {Number} y
+ * @param {Number} k
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.cmyk2rgb = function(c, m, y, k) {
+  c /= 100;
+  m /= 100;
+  y /= 100;
+  k /= 100;
+
+  var r = round(255 * (1 - c) * (1 - k));
+  var g = round(255 * (1 - m) * (1 - k));
+  var b = round(255 * (1 - y) * (1 - k));
+
+  return [r, g, b];
 };
 
 /**
@@ -378,6 +309,40 @@ module.exports.rgb2hsl = function(r, g, b) {
 };
 
 /**
+ * Expose HSL to RGB
+ *
+ * @param {Number} h
+ * @param {Number} s
+ * @param {Number} l
+ * @return {Array}
+ * @api public
+ */
+
+module.exports.hsl2rgb = function(h, s, l) {
+  h /= 60;
+  s /= 100;
+  l /= 100;
+
+  var c = 255 * (1 - abs((2 * l) - 1)) * s;
+  var x = c * (1 - abs((h % 2) - 1));
+  var m = (255 * l) - (c / 2);
+  var hi = floor(h) % 6;
+
+  c = round(c + m);
+  x = round(x + m);
+  m = round(m);
+
+  switch (hi) {
+    case 0: return [c, x, m];
+    case 1: return [x, c, m];
+    case 2: return [m, c, x];
+    case 3: return [m, x, c];
+    case 4: return [x, m, c];
+    case 5: return [c, m, x];
+  }
+};
+
+/**
  * Expose RGB to HSV
  *
  * @param {Number} r
@@ -412,23 +377,36 @@ module.exports.rgb2hsv = function(r, g, b) {
 };
 
 /**
- * Expose RGB to KEYWORD
+ * Expose HSV to RGB
  *
- * @param {Number} r
- * @param {Number} g
- * @param {Number} b
- * @return {String}
+ * @param {Number} h
+ * @param {Number} s
+ * @param {Number} v
+ * @return {Array}
  * @api public
  */
 
-module.exports.rgb2keyword = function() {
-  for (var k in keywords) {
-    if (keywords.hasOwnProperty(k)) {
-      for (var i = 0; i < 3; i++) {
-        if (keywords[k][i] !== arguments[i]) break;
-      }
-      if (i > 2) return [k];
-    }
+module.exports.hsv2rgb = function(h, s, v) {
+  h /= 60;
+  s /= 100;
+  v /= 100;
+
+  var c = 255 * v * s;
+  var x = c * (1 - abs((h % 2) - 1));
+  var m = 255 * v - c;
+  var hi = floor(h) % 6;
+
+  c = round(c + m);
+  x = round(x + m);
+  m = round(m);
+
+  switch (hi) {
+    case 0: return [c, x, m];
+    case 1: return [x, c, m];
+    case 2: return [m, c, x];
+    case 3: return [m, x, c];
+    case 4: return [x, m, c];
+    case 5: return [c, m, x];
   }
 };
 
