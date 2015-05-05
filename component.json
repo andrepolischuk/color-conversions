@@ -1,7 +1,7 @@
 {
   "name": "color-conversions",
   "description": "Color conversion functions",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "keywords": [
     "color",
     "conversions",
