@@ -4,15 +4,8 @@
 
 ## Instalation
 
-  Component(1):
-
 ```sh
 $ component install andrepolischuk/color-conversions
-```
-
-  Npm:
-
-```sh
 $ npm install color-conversions
 ```
 
