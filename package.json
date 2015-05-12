@@ -7,10 +7,7 @@
     "conversions",
     "ccc"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/andrepolischuk/color-conversions.git"
-  },
+  "repository": "andrepolischuk/color-conversions",
   "devDependencies": {
     "mocha": "^2.2.4"
   },

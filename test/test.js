@@ -1,4 +1,6 @@
 
+'use strict';
+
 var conversions = require('..');
 var assert = require('assert');
 

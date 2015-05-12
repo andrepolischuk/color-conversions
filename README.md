@@ -1,12 +1,12 @@
 # color-conversions [![Build Status](https://travis-ci.org/andrepolischuk/color-conversions.svg?branch=master)](https://travis-ci.org/andrepolischuk/color-conversions)
 
-  Color conversion functions
+  > Color conversion functions
 
 ## Instalation
 
 ```sh
+$ npm install --save color-conversions
 $ component install andrepolischuk/color-conversions
-$ npm install color-conversions
 ```
 
 ## Usage
