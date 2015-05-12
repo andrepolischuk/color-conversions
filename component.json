@@ -1,15 +1,15 @@
 {
   "name": "color-conversions",
   "description": "Color conversion functions",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": [
     "color",
     "conversions",
     "ccc"
   ],
   "repository": "andrepolischuk/color-conversions",
-  "main" : "index.js",
-  "scripts" : [
+  "main": "index.js",
+  "scripts": [
     "index.js"
   ],
   "license": "MIT"
