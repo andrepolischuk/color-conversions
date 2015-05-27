@@ -6,6 +6,9 @@
 
 ```sh
 $ npm install --save color-conversions
+```
+
+```sh
 $ component install andrepolischuk/color-conversions
 ```
 
