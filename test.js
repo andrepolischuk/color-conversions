@@ -1,7 +1,7 @@
 
 'use strict';
 
-var conversions = require('..');
+var conversions = require('./');
 var assert = require('assert');
 
 describe('conversions', function() {

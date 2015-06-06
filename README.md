@@ -2,14 +2,14 @@
 
   > Color conversion functions
 
-## Instalation
+## Install
 
 ```sh
-$ npm install --save color-conversions
+npm install --save color-conversions
 ```
 
 ```sh
-$ component install andrepolischuk/color-conversions
+component install andrepolischuk/color-conversions
 ```
 
 ## Usage
